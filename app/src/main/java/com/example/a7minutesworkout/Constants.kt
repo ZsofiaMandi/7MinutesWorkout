@@ -16,7 +16,7 @@ object Constants {
 
         val highKneesRunningInPlace = ExerciseModel(
             2,
-            "High Knees Running in Place",
+            "High Knees Running In Place",
             R.drawable.ic_high_knees_running_in_place,
             false,
             false
@@ -52,7 +52,7 @@ object Constants {
 
         val stepUpOntoChair = ExerciseModel(
             6,
-            "Step Up onto Chair",
+            "Step Up Onto Chair",
             R.drawable.ic_step_up_onto_chair,
             false,
             false
@@ -61,7 +61,7 @@ object Constants {
 
         val tricepsDipOnChair = ExerciseModel(
             7,
-            "Step Up onto Chair",
+            "Triceps Dip On Chair",
             R.drawable.ic_triceps_dip_on_chair,
             false,
             false
@@ -79,7 +79,7 @@ object Constants {
 
         val pushUpAndRotation = ExerciseModel(
             9,
-            "Push Up and Rotation",
+            "Push Up And Rotation",
             R.drawable.ic_push_up_and_rotation,
             false,
             false
