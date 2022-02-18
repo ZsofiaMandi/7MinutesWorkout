@@ -17,7 +17,10 @@ class ExerciseActivity : AppCompatActivity() {
 
     private var exerciseTimer: CountDownTimer? = null // Timer for exercising
     private var exerciseProgress: Int = 0
-    private var exerciseDuration: Int = 30
+    private var exerciseDuration: Int = 3
+
+    private var exerciseList : ArrayList<ExerciseModel>? = null
+    private var currentExercisePosition : Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,9 @@ class ExerciseActivity : AppCompatActivity() {
         if(supportActionBar != null){
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
+
+        // Creating the exercise list from the constants
+        exerciseList = Constants.defaultExerciseList()
 
         binding?.toolBarExercise?.setNavigationOnClickListener{
             onBackPressed() // Doing a normal go back action
@@ -61,18 +67,19 @@ class ExerciseActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                setupExerciseView("Exercise name")
+                currentExercisePosition++
+                setupExerciseView()
             }
 
         }.start()
     }
 
-    private fun setupExerciseView(exerciseName: String){
+    private fun setupExerciseView(){
         if (exerciseTimer != null){
             exerciseTimer?.cancel()
             exerciseProgress = 0
         }
-        binding?.tvTitle?.text = exerciseName
+        binding?.tvTitle?.text = "Exercise name"
         binding?.flProgressBarRest?.visibility = View.INVISIBLE
         binding?.flProgressBarExercise?.visibility = View.VISIBLE
         setExerciseProgressBar()
