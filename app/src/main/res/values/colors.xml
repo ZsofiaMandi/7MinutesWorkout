@@ -14,5 +14,6 @@
     <color name="lightGrey">#C4C4C4</color>
     <color name="toolbar_color_control_normal">#000000</color>
     <color name="grayish_white">#D4DEE7</color>
+    <color name="darkGrey">#212121</color>
 
 </resources>
