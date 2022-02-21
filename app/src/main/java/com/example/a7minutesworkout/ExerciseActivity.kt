@@ -1,5 +1,6 @@
 package com.example.a7minutesworkout
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +34,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var tts: TextToSpeech? = null
     private var player: MediaPlayer? = null
 
+
+
     private var exerciseAdapter : ExerciseStatusAdapter? = null // Creating the adapter for recycler view
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,15 +50,17 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
 
+        binding?.toolBarExercise?.setNavigationOnClickListener{
+            onBackPressed() // Doing a normal go back action
+        }
+
         // Initialize Text to Speech
         tts = TextToSpeech(this, this)
 
         // Creating the exercise list from the constants
         exerciseList = Constants.defaultExerciseList()
 
-        binding?.toolBarExercise?.setNavigationOnClickListener{
-            onBackPressed() // Doing a normal go back action
-        }
+
 
         setupRestView()
         setupExerciseStatusRecyclerView()
@@ -160,9 +165,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     exerciseAdapter!!.notifyDataSetChanged()
 
                 }else{
-                    Toast.makeText(this@ExerciseActivity,
-                    "Congratulations! You have completed the 7 minutes workout",
-                    Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@ExerciseActivity, FinishActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
             }
 

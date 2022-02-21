@@ -4,4 +4,8 @@
     <string name="_7_minutes_workout">7 Minutes workout</string>
     <string name="get_ready_for">GET READY FOR</string>
     <string name="upcoming_exercise">UPCOMING EXERCISE:</string>
+    <string name="end">END</string>
+    <string name="congrats_text2">your 7 minutes workout!</string>
+    <string name="congrats_text1">You have completed</string>
+    <string name="finish">Finish</string>
 </resources>
