@@ -37,19 +37,13 @@
             android:src="@drawable/congratulations"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/congrats_text1"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:textColor="@color/colorPrimary"
-            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="@string/congrats_text2"
+            android:text="@string/you_have_completed_your_7_minutes_workout"
+            android:gravity="center"
             android:textSize="20sp"
             android:textColor="@color/colorPrimary"
             android:paddingBottom="10dp"

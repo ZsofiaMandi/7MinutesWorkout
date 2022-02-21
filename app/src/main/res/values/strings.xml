@@ -5,7 +5,12 @@
     <string name="get_ready_for">GET READY FOR</string>
     <string name="upcoming_exercise">UPCOMING EXERCISE:</string>
     <string name="end">END</string>
-    <string name="congrats_text2">your 7 minutes workout!</string>
-    <string name="congrats_text1">You have completed</string>
+
     <string name="finish">Finish</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="you_have_completed_your_7_minutes_workout">You have completed <br /> your 7 minutes workout!</string>
+    <string name="this_will_stop_your_workout_you_ve_come_this_far_are_you_sure_you_want_to_quit">This will stop your workout. You\'ve come this far, <br /> are you sure you want to quit?</string>
+    <string name="yes">Yes</string>
+    <string name="bmi">BMI</string>
+    <string name="calculator">Calculator</string>
 </resources>

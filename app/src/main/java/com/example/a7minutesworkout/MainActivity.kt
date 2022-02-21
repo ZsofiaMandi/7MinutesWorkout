@@ -23,6 +23,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding?.flBMI?.setOnClickListener{
+            val intentBmi = Intent(this, BMIActivity::class.java)
+            startActivity(intentBmi)
+        }
+
     }
 
     // resetting binding to null when dest
