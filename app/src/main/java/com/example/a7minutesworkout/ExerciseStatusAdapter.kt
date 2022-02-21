@@ -21,6 +21,7 @@ class ExerciseStatusAdapter(val exerciseList: ArrayList<ExerciseModel>):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        // What we want to do for every single binding
         val exercise: ExerciseModel = exerciseList[position]
         holder.tvItem.text = exercise.getId().toString()
     }
