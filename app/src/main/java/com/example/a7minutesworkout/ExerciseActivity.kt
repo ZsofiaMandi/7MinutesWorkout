@@ -96,6 +96,10 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
             override fun onFinish() {
                 currentExercisePosition++
+
+                exerciseList!![currentExercisePosition].setIsSelected(true)
+                exerciseAdapter!!.notifyDataSetChanged()
+
                 setupExerciseView()
             }
 
@@ -150,6 +154,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                         e.printStackTrace()
                     }
                     setupRestView()
+
+                    exerciseList!![currentExercisePosition].setIsSelected(false)
+                    exerciseList!![currentExercisePosition].setIsCompleted(true)
+                    exerciseAdapter!!.notifyDataSetChanged()
+
                 }else{
                     Toast.makeText(this@ExerciseActivity,
                     "Congratulations! You have completed the 7 minutes workout",
