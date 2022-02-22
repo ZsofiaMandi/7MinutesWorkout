@@ -10,6 +10,12 @@ import java.math.RoundingMode
 
 class BMIActivity : AppCompatActivity() {
 
+    companion object{
+        private const val METRIC_UNITS_VIEW = "METRIC_UNITS_VIEW"
+        private const val US_UNITS_VIEW = "US_UNITS_VIEW"
+    }
+    private var currentVisibleView: String = METRIC_UNITS_VIEW
+
     private var binding: ActivityBmiBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,16 +36,48 @@ class BMIActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        binding?.btnCalculateUnits?.setOnClickListener {
-            if (validateMetricUnits()){
-                val bmi = calculateBMI()
-                displayBMIResult(bmi)
+        makeVisibleMetricUnitsView()
+
+        binding?.rgUnits?.setOnCheckedChangeListener { _, checkedId: Int ->
+            if (checkedId == R.id.rbMetricUnits){
+                makeVisibleMetricUnitsView()
             }else{
-                Toast.makeText(this,
-                    "Please enter valid values.",
-                    Toast.LENGTH_SHORT).show()
+                makeVisibleUsUnitsView()
             }
         }
+
+        binding?.btnCalculateUnits?.setOnClickListener {
+            calculateBMI()
+        }
+
+
+    }
+
+    private fun makeVisibleMetricUnitsView(){
+        currentVisibleView = METRIC_UNITS_VIEW
+        binding?.tilMetricUnitWeight?.visibility = View.VISIBLE
+        binding?.tilMetricUnitHeight?.visibility = View.VISIBLE
+        binding?.llUSUnits?.visibility = View.INVISIBLE
+        binding?.tilUsUnitWeight?.visibility = View.INVISIBLE
+
+        binding?.etMetricUnitHeight?.text!!.clear()
+        binding?.etMetricUnitWeight?.text!!.clear()
+
+        binding?.llDisplayBMIResult?.visibility = View.INVISIBLE
+    }
+
+    private fun makeVisibleUsUnitsView(){
+        currentVisibleView = US_UNITS_VIEW
+        binding?.tilMetricUnitWeight?.visibility = View.INVISIBLE
+        binding?.tilMetricUnitHeight?.visibility = View.INVISIBLE
+        binding?.llUSUnits?.visibility = View.VISIBLE
+        binding?.tilUsUnitWeight?.visibility = View.VISIBLE
+
+        binding?.etUsUnitHeightFeet?.text!!.clear()
+        binding?.etUsUnitHeightInch?.text!!.clear()
+        binding?.etUsUnitWeight?.text!!.clear()
+
+        binding?.llDisplayBMIResult?.visibility = View.INVISIBLE
 
     }
 
@@ -55,11 +93,56 @@ class BMIActivity : AppCompatActivity() {
         return isValid
     }
 
-    private fun calculateBMI(): Float {
-        val heightValue: Float = binding?.etMetricUnitHeight?.text.toString().toFloat() / 100
-        val weightValue: Float = binding?.etMetricUnitWeight?.text.toString().toFloat()
+    private fun validateUsUnits(): Boolean{
+        var isValid = true
 
-        return weightValue / (heightValue * heightValue)
+        when {
+            binding?.etUsUnitWeight?.text.toString().isEmpty() -> {
+                isValid = false
+            }
+            binding?.etUsUnitHeightFeet?.text.toString().isEmpty() -> {
+                isValid = false
+            }
+            binding?.etUsUnitHeightInch?.text.toString().isEmpty() -> {
+                isValid = false
+            }
+        }
+
+        return isValid
+    }
+
+    private fun calculateBMI() {
+        if (currentVisibleView == METRIC_UNITS_VIEW){
+            if (validateMetricUnits()){
+                val heightValue: Float = binding?.etMetricUnitHeight?.text.toString().toFloat() / 100
+                val weightValue: Float = binding?.etMetricUnitWeight?.text.toString().toFloat()
+
+                val bmi = weightValue / (heightValue * heightValue)
+
+                displayBMIResult(bmi)
+            }else{
+                Toast.makeText(this,
+                    "Please enter valid values.",
+                    Toast.LENGTH_SHORT).show()
+            }
+        }else{
+            if(validateUsUnits()){
+                val heightValueFeet: Float = binding?.etUsUnitHeightFeet?.text.toString().toFloat()
+                val heightValueInch: Float = binding?.etUsUnitHeightInch?.text.toString().toFloat()
+                val weightValue: Float = binding?.etUsUnitWeight?.text.toString().toFloat()
+
+                val heightValue = heightValueFeet * 12 + heightValueInch
+
+                val bmi = weightValue / (heightValue * heightValue) * 703
+
+                displayBMIResult(bmi)
+            }else{
+                Toast.makeText(this,
+                    "Please enter valid values.",
+                    Toast.LENGTH_SHORT).show()
+            }
+        }
+
     }
 
     private fun displayBMIResult(bmi: Float){

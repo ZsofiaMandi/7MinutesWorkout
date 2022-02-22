@@ -17,4 +17,8 @@
     <string name="height_in_cm">HEIGHT (in cm)</string>
     <string name="your_bmi">YOUR BMI</string>
     <string name="calculate">Calculate</string>
+    <string name="metric_units">METRIC UNITS</string>
+    <string name="feet">Feet</string>
+    <string name="weight_in_pounds">WEIGHT (in pounds)</string>
+    <string name="us_units">US Units</string>
 </resources>

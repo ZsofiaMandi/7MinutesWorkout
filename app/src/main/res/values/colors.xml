@@ -15,5 +15,7 @@
     <color name="toolbar_color_control_normal">#000000</color>
     <color name="grayish_white">#D4DEE7</color>
     <color name="darkGrey">#212121</color>
-
+    <color name="grey">#ADB3BE</color>
+    <color name="almost_white">#ECEDEF</color>
+    <color name="middle_grey">#9AA2AF</color>
 </resources>
