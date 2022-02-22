@@ -19,13 +19,18 @@ class MainActivity : AppCompatActivity() {
 
         binding?.flStart?.setOnClickListener {
             // Creating an intent to move to ExerciseActivity from MainActivity
-            val intent = Intent(this, ExerciseActivity::class.java)
-            startActivity(intent)
+            val intentStart = Intent(this, ExerciseActivity::class.java)
+            startActivity(intentStart)
         }
 
         binding?.flBMI?.setOnClickListener{
             val intentBmi = Intent(this, BMIActivity::class.java)
             startActivity(intentBmi)
+        }
+
+        binding?.flHistory?.setOnClickListener{
+            val intentHistory = Intent(this, HistoryActivity::class.java)
+            startActivity(intentHistory)
         }
 
     }
