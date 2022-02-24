@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".HistoryActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -15,5 +16,43 @@
         app:titleTextColor="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         />
+
+    <TextView
+        android:id="@+id/exercise_completed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/exercise_completed"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/toolBarHistory"
+        />
+
+    <TextView
+        android:id="@+id/no_completed_workouts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/no_workouts"
+        android:textSize="17sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exercise_completed"
+        app:layout_constraintVertical_bias="0.412"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/exercise_completed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        tools:listitem="@layout/item_history_row"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

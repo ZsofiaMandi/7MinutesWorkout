@@ -18,4 +18,5 @@
     <color name="grey">#ADB3BE</color>
     <color name="almost_white">#ECEDEF</color>
     <color name="middle_grey">#9AA2AF</color>
+    <color name="lightGray">#EBEBEB</color>
 </resources>

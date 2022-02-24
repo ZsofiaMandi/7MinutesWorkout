@@ -21,4 +21,6 @@
     <string name="feet">Feet</string>
     <string name="weight_in_pounds">WEIGHT (in pounds)</string>
     <string name="us_units">US Units</string>
+    <string name="exercise_completed">EXERCISE COMPLETED</string>
+    <string name="no_workouts">No completed workouts yet.<br /> Get started now!</string>
 </resources>
